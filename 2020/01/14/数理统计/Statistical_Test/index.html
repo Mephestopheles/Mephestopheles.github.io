@@ -7,18 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Category: 数理统计 - Hexo</title>
+<title>假设检验理论 - Hexo</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/index.html">
+    <meta name="description" content="该部分内容对应Hogg课本的第6章和第9章，我们的研究建立在对假设检验已有基本理论认识的基础上，进而讨论如何确定最优的拒绝域$C$. 事实上，这里的“最优”指的是在控制第一类错误的前提下，使第二类错误尽可能小：  $P[(X_1,X_2,\cdots,X_n) \in C;H_0]&#x3D;\alpha$ $P[(X_1,X_2,\cdots,X_n) \in C;H_1]&#x3D;1-\beta$  其中$\a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="假设检验理论">
+<meta property="og:url" content="http://yoursite.com/2020/01/14/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Statistical_Test/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="该部分内容对应Hogg课本的第6章和第9章，我们的研究建立在对假设检验已有基本理论认识的基础上，进而讨论如何确定最优的拒绝域$C$. 事实上，这里的“最优”指的是在控制第一类错误的前提下，使第二类错误尽可能小：  $P[(X_1,X_2,\cdots,X_n) \in C;H_0]&#x3D;\alpha$ $P[(X_1,X_2,\cdots,X_n) \in C;H_1]&#x3D;1-\beta$  其中$\a">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:image" content="http://yoursite.com/gallery/thumbnails/deer.jpg">
+<meta property="article:published_time" content="2020-01-13T17:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-13T18:46:34.194Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数理统计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+<meta name="twitter:image" content="http://yoursite.com/gallery/thumbnails/deer.jpg">
 
 
 
@@ -76,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo1.svg" alt="Hexo" height="28">
+                <img src="/images/logo1.svg" alt="假设检验理论" height="28">
             
             </a>
         </div>
@@ -112,6 +117,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -125,27 +134,13 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">Categories</a></li>
-            
-            <li><a href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">数理统计</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-image">
-        <a href="/2020/01/14/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Statistical_Test/" class="image is-7by1">
+        <span  class="image is-7by1">
             <img class="thumbnail" src="/gallery/thumbnails/deer.jpg" alt="假设检验理论">
-        </a>
+        </span>
     </div>
     
     <div class="card-content article ">
@@ -171,7 +166,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/01/14/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Statistical_Test/">假设检验理论</a>
+                假设检验理论
             
         </h1>
         <div class="content">
@@ -181,16 +176,129 @@
 <li>$P[(X_1,X_2,\cdots,X_n) \in C;H_1]=1-\beta$</li>
 </ul>
 <p>其中$\alpha,\beta$分别为第一类和第二类错误.</p>
+<a id="more"></a>
+
+
+
+<p>我们将依从Hogg课本循序渐进地讨论以下三种情况及其拓展和应用：</p>
+<ul>
+<li>$H_0$: 简单假设 / $H_1$: 复合假设</li>
+<li>$H_0$: 简单假设 / $H_1$: 复合假设</li>
+<li>$H_0,H_1$任意</li>
+</ul>
+<h2 id="一、显著性检验-Certain-Best-Tests"><a href="#一、显著性检验-Certain-Best-Tests" class="headerlink" title="一、显著性检验(Certain Best Tests)"></a>一、显著性检验(Certain Best Tests)</h2><p>设随机样本$X_1,X_2,\cdots,X_n$服从密度函数$f(x;\theta)$，$\Omega=\{\theta’,\theta’’\}$，考虑两个简单假设$H_0:\theta=\theta’,H_1:\theta=\theta’’$.</p>
+<p><strong>定义1.</strong> 称$C\subseteq \mathbb{R}^n$是一个大小为$\alpha$的<strong>最优拒绝域(best critical region)</strong>，若对任意$A \subseteq \mathbb{R}^n$满足$\operatorname{Pr}[(X_1,X_2,\cdots,X_n) \in A,H_0]=\alpha$，有</p>
+<p>(a) $\operatorname{Pr}[(X_1,X_2,\cdots,X_n) \in C,H_0]=\alpha$</p>
+<p>(b) $\operatorname{Pr}[(X_1,X_2,\cdots,X_n) \in C,H_1] \geq \operatorname{Pr}[(X_1,X_2,\cdots,X_n) \in A,H_1]$</p>
+<p><strong>注：</strong>设$C$为拒绝域，$\operatorname{Pr}[(X_1,X_2,\cdots,X_n) \in C,H_1]=1-\beta$，其中$\beta$为犯第二类错误的概率，因此$\operatorname{Pr}[(X_1,X_2,\cdots,X_n) \in C,H_1]$的取值应尽可能地大.</p>
+<p><strong>定理1 (Neyman-Pearson Thm).</strong> 样本$X_1,X_2,\cdots,X_n$的似然函数为</p>
+<p>$$<br>L(\theta;x_1,x_2,\cdots,x_n)=f(x_1;\theta)f(x_2;\theta) \cdots f(x_n;\theta)<br>$$</p>
+<p>设$C \subseteq \mathbb{R}^n$，若存在$k &gt; 0$使得</p>
+<p>(a) $\dfrac{L(\theta’;x_1,x_2,\cdots,x_n)}{L(\theta’’;x_1,x_2,\cdots,x_n)} \leq k$, for $(x_1,x_2,\cdots,x_n) \in C$</p>
+<p>(b) $\dfrac{L(\theta’;x_1,x_2,\cdots,x_n)}{L(\theta’’;x_1,x_2,\cdots,x_n)} \geq k$, for $(x_1,x_2,\cdots,x_n) \in C^*=\mathbb{R} \backslash C$</p>
+<p>(c) $\operatorname{Pr}[(X_1,X_2,\cdots,X_n) \in C,H_0]=\alpha$</p>
+<p>则称$C$是一个大小为$\alpha$的最优拒绝域.</p>
+<p>先不考虑大小，假设检验的一个最优拒绝域具有形式</p>
+<p>$$<br>C = \left\{ (x_1,x_2,\cdots,x_n) : \frac{L(\theta’;x_1,x_2,\cdots,x_n)}{L(\theta’’;x_1,x_2,\cdots,x_n)} \leq k , k&gt;0 \right\}<br>$$</p>
+<p>通常可以写作（其中$u_1$或$u_2$的概率分布应可知）</p>
+<p>$$<br>C = \left\{ (x_1,x_2,\cdots,x_n) : u_1(x_1,x_2,\cdots,x_n;\theta’,\theta’’) \leq c_1 \right\}<br>$$</p>
+<p>或</p>
+<p>$$<br>C = \left\{ (x_1,x_2,\cdots,x_n) : u_2(x_1,x_2,\cdots,x_n;\theta’,\theta’’) \geq c_2 \right\}<br>$$</p>
+<p>以前者为例，常数$c_1$的值则可以由$C$的大小$\alpha$确定：</p>
+<p>$$<br>\alpha = \operatorname{Pr}[u_1(x_1,x_2,\cdots,x_n;\theta’,\theta’’) \leq c_1;H_0]<br>$$</p>
+<hr>
+<h2 id="二、最优势检验-Uniformly-Most-Powerful-Tests"><a href="#二、最优势检验-Uniformly-Most-Powerful-Tests" class="headerlink" title="二、最优势检验(Uniformly Most Powerful Tests)"></a>二、最优势检验(Uniformly Most Powerful Tests)</h2><p>设随机样本$X_1,X_2,\cdots,X_n$服从密度函数$f(x;\theta)$，$\Omega=\{\theta’,\theta’’\}$，考虑简单假设$H_0:\theta=\theta’$和复合假设$H_1:\theta&gt;\theta’$（此时称该检验为右侧检验）. 对于左侧检验（即$H_1:\theta&lt;\theta’$），下列定义可直接推广.</p>
+<p><strong>定义2.</strong> 拒绝域$C$称为大小为$\alpha$的<strong>一致最优拒绝域(uniformly most powerful critical region)</strong>，如果对$H_1$中的任意简单假设$H_1’:\theta=\theta’’&gt;\theta’$，$C$都是最优的.</p>
+<p>设$Y=u(X_1,X_2,\cdots,X_n)$是$\theta$的一个充分统计量，由因子分解定理：</p>
+<p>$$<br>L(\theta;x_1,x_2,\cdots,x_n)=k_1[u(x_1,x_2,\cdots,x_n);\theta]k_2(x_1,x_2,\cdots,x_n)<br>$$</p>
+<p>于是</p>
+<p>$$<br>\frac{L(\theta’;x_1,x_2,\cdots,x_n)}{L(\theta’’;x_1,x_2,\cdots,x_n)} = \frac{k_1[u(x_1,x_2,\cdots,x_n);\theta’]}{k_1[u(x_1,x_2,\cdots,x_n);\theta’’]}<br>$$</p>
+<p>所以一致最优拒绝域应基于充分统计量而非其他统计量.</p>
+<p><strong>推论2.</strong> 设密度函数$f(x;\theta)$属于指数分布族：</p>
+<p>$$<br>f(x;\theta)=\exp\{p(\theta)K(x)+S(x)+q(\theta)\}, \quad x \in \mathscr{A}<br>$$</p>
+<p>则对于检验$H_0:\theta=\theta’$, $H_1:\theta&lt;\theta’$，有</p>
+<p>$$<br>\frac{L(\theta’)}{L(\theta’’)} \leq k \Leftrightarrow \sum_{i=1}^n K(x_i) \leq c \quad (\theta’’&lt;\theta’)<br>$$</p>
+<p>即一致最优拒绝域$C$由$C=\{\sum K(x_i) \leq c\}$给出.</p>
+<p>类似地，对于检验$H_0:\theta=\theta’$, $H_1:\theta &gt; \theta’$，则有$C=\{\sum K(x_i) \geq c\}$.</p>
+<hr>
+<h2 id="三、似然比检验-Likelihood-Ratio-Tests"><a href="#三、似然比检验-Likelihood-Ratio-Tests" class="headerlink" title="三、似然比检验(Likelihood Ratio Tests)"></a>三、似然比检验(Likelihood Ratio Tests)</h2><p>首先我们需要清楚的是，似然比检验通常适用于以下两种情形：</p>
+<ul>
+<li><p><u>Composite Hypothesis</u> against <u>Composite Hypothesis</u></p>
+</li>
+<li><p><u>Simple Hypothesis</u> against <u>Composite Hypothesis</u> when a uniformly most powerful test does not exist</p>
+</li>
+</ul>
+<p>设$\omega \subset \Omega$，$H_0:\theta \in \omega$，$H_1:\theta\in\Omega$，则似然比检验的具体步骤为：</p>
+<p>(1) The joint p.d.f. of $X_1,X_2,\cdots,X_n$, at each point in $\omega$ 记为 $L(\omega)$</p>
+<p>The joint p.d.f. of $X_1,X_2,\cdots,X_n$, at each point in $\Omega$ 记为 $L(\Omega)$</p>
+<p>(2) 利用最大似然估计计算$L(\omega)$在$\omega$上的最大值：$L(\hat{\omega})$</p>
+<p>利用最大似然估计计算$L(\Omega)$在$\Omega$上的最大值：$L(\hat{\Omega})$</p>
+<p>(3) 拒绝域$C$由<strong>似然比(likelihood ratio)</strong>的取值决定：</p>
+<p>$$<br>\lambda := \lambda(x_1,x_2,\cdots,x_n) = \frac{L(\hat{\omega})}{L(\hat{\Omega})}<br>$$</p>
+<p>注意到$H_0$成立时$\lambda$应较大，于是拒绝域具有如下形式：</p>
+<p>$$<br>C=\{(x_1,x_2,\cdots,x_n):\lambda \leq \lambda_0\}<br>$$</p>
+<p>其中$\lambda_0$的取值由</p>
+<p>$$<br>\alpha=\operatorname{Pr}[\lambda(X_1,X_2,\cdots,X_n) \leq \lambda_0;H_0]<br>$$</p>
+<p>确定.</p>
+<hr>
+<h2 id="四、序贯似然比检验-Sequential-Probability-Ratio-Test"><a href="#四、序贯似然比检验-Sequential-Probability-Ratio-Test" class="headerlink" title="四、序贯似然比检验(Sequential Probability Ratio Test)"></a>四、序贯似然比检验(Sequential Probability Ratio Test)</h2><p>设$\Omega=\{\theta’,\theta’’\}$，$H_0:\theta=\theta’$，$H_1:\theta=\theta’’$.</p>
+<p>定义$X_1,X_2,\cdots,X_n$（样本容量$n$不固定）的联合密度函数为</p>
+<p>$$<br>L(\theta,n)=f(x_1,\theta)f(x_2,\theta) \cdots f(x_n,\theta)<br>$$</p>
+<p>则样本容量为$n$时拒绝域为</p>
+<p>$$<br>C_n=\left\{ (x_1,\cdots,x_n):k_0&lt;\frac{L(\theta’,j)}{L(\theta’’,j)}&lt;k_1,j=1,\cdots,n-1;\frac{L(\theta’,n)}{L(\theta’’,n)}\leq k_0 \right\}<br>$$</p>
+<p>接受域为</p>
+<p>$$<br>B_n=\left\{ (x_1,\cdots,x_n):k_0&lt;\frac{L(\theta’,j)}{L(\theta’’,j)}&lt;k_1,j=1,\cdots,n-1;\frac{L(\theta’,n)}{L(\theta’’,n)}\geq k_1 \right\}<br>$$</p>
+<p>其中$k_0&lt;k_1$为给定常数，通常</p>
+<p>$$<br>k_0&lt;\frac{L(\theta’,n)}{L(\theta’’,n)}&lt;k_1 \Leftrightarrow c_0(n)&lt;u(x_1,x_2,\cdots,x_n)&lt;c_1(n)<br>$$</p>
+<p>于是当上式成立时，继续增加样本进行观察；直至</p>
+<p>$$<br>u(x_1,x_2,\cdots,x_n) \leq c_0(n) \quad\text{or}\quad u(x_1,x_2,\cdots,x_n) \geq c_1(n)<br>$$</p>
+<p>时才接受或拒绝原假设$H_0$.</p>
+<p><strong>注:</strong> 如果要求犯两类错误概率应接近$\alpha_a$和$\beta_a$，那么由此可以确定$k_0$和$k_1$的取值：</p>
+<p>$$<br>k_0=\frac{\alpha_a}{1-\beta_a}, \quad k_1=\frac{1-\alpha_a}{\beta_a}<br>$$</p>
+<p>此时实际犯错误概率的上限为：</p>
+<p>$$<br>\alpha \leq \frac{\alpha_a}{1-\beta_a}=k_0, \quad \beta \leq \frac{\beta_a}{1-\alpha_a}=\frac{1}{k_1}<br>$$</p>
+<p>且它们满足：$\alpha+\beta \leq \alpha_a+\beta_a$.</p>
+<hr>
+<h2 id="五、决策论观点下的假设检验"><a href="#五、决策论观点下的假设检验" class="headerlink" title="五、决策论观点下的假设检验"></a>五、决策论观点下的假设检验</h2><h3 id="概念1-Minimax-Test"><a href="#概念1-Minimax-Test" class="headerlink" title="概念1: Minimax Test"></a>概念1: Minimax Test</h3><p>设$\Omega=\{\theta’,\theta’’\}$，$H_0:\theta=\theta’$，$H_1:\theta=\theta’’$.</p>
+<p>取定损失函数为$\mathscr{L}(\theta,\delta)$，其中决策$\delta$包含：$\delta=\theta’$(接受$H_0$)和$\delta=\theta’’$(拒绝$H_0$)，于是需要确定以下取值：</p>
+<p>$$<br>\mathscr{L}(\theta’,\theta’)=\mathscr{L}(\theta’’,\theta’’)=0, \quad \mathscr{L}(\theta’,\theta’’),\mathscr{L}(\theta’’,\theta’)&gt;0<br>$$</p>
+<p>风险函数记为：</p>
+<p>$$<br>R(\theta,C)=R(\theta,\delta)=E[\mathscr{L}(\theta,\delta)]=\int_{C} \mathscr{L}(\theta,\theta’’)L(\theta)+\int_{C^{*}} \mathscr{L}(\theta,\theta’)L(\theta)<br>$$</p>
+<p>Minimax检验要求找到拒绝域</p>
+<p>$$<br>C = \left\{ (x_1,x_2,\cdots,x_n) : \frac{L(\theta’;x_1,x_2,\cdots,x_n)}{L(\theta’’;x_1,x_2,\cdots,x_n)} \leq k \right\}<br>$$</p>
+<p>使得</p>
+<p>$$<br>\max[R(\theta’,C),R(\theta’’,C)]=\max\left[ \mathscr{L}(\theta’,\theta’’)\int_{C}L(\theta’),\mathscr{L}(\theta’’,\theta’)\int_{C^*}L(\theta’’) \right]<br>$$</p>
+<p>最小化，此时$k$的取值由条件</p>
+<p>$$<br>\mathscr{L}(\theta’,\theta’’)\int_{C}L(\theta’)=\mathscr{L}(\theta’’,\theta’)\int_{C^*}L(\theta’’)<br>$$</p>
+<p>直接确定.</p>
+<h3 id="概念2-Bayesian-Test"><a href="#概念2-Bayesian-Test" class="headerlink" title="概念2: Bayesian Test"></a>概念2: Bayesian Test</h3><p>设$\Omega=\{\theta’,\theta’’\}$，$H_0:\theta=\theta’$，$H_1:\theta=\theta’’$，其中$\theta’,\theta’’$为随机变量$\Theta$的取值且具有<strong>先验概率(prior probabilities)</strong>：$h(\theta’)&gt;0$和$h(\theta’’)&gt;0$</p>
+<p>Bayesian检验要求</p>
+<p>$$<br>E[\mathscr{L}(\theta,\theta’’)|X_1=x_1,\cdots,X_n=x_n] &lt; E[\mathscr{L}(\theta,\theta’)|X_1=x_1,\cdots,X_n=x_n]<br>$$</p>
+<p>等价于</p>
+<p>$$<br>\sum_{\Omega} \mathscr{L}(\theta,\theta’’) k(\theta|x_1,\cdots,x_n) &lt; \sum_{\Omega} \mathscr{L}(\theta,\theta’) k(\theta|x_1,\cdots,x_n)<br>$$</p>
+<p>等价于</p>
+<p>$$<br>\frac{\mathscr{L}(\theta’,\theta’’)h(\theta’)L(\theta’)}{h(\theta’)L(\theta’)+h(\theta’’)L(\theta’’)} &lt; \frac{\mathscr{L}(\theta’’,\theta’)h(\theta’’)L(\theta’’)}{h(\theta’)L(\theta’)+h(\theta’’)L(\theta’’)}<br>$$</p>
+<p>等价于</p>
+<p>$$<br>\frac{L(\theta’)}{L(\theta’’)}&lt;\frac{\mathscr{L}(\theta’’,\theta’)h(\theta’’)}{\mathscr{L}(\theta’,\theta’’)h(\theta’)}<br>$$</p>
+<p>所以拒绝域$C$具有如下形式：</p>
+<p>$$<br>C = \left\{ (x_1,x_2,\cdots,x_n) : \frac{L(\theta’;x_1,x_2,\cdots,x_n)}{L(\theta’’;x_1,x_2,\cdots,x_n)} &lt; k \right\}<br>$$</p>
+<p>其中$k$的取值由$k=\dfrac{\mathscr{L}(\theta’’,\theta’)h(\theta’’)}{\mathscr{L}(\theta’,\theta’’)h(\theta’)}$确定.</p>
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li>Hogg, R. V., &amp; Craig, A. T. (. T. (1995). <em>Introduction to mathematical statistics</em> (5th ed.). Englewood Cliffs, N.J.: Prentice Hall.</li>
+</ol>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/01/14/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Statistical_Test/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" rel="tag">数理统计</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -198,128 +306,50 @@
 
 
 
-
-
-
-
-
-    
 <div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/01/13/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/UMVUE/" class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/flower.jpg" alt="求一致最小方差无偏估计的方法">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-13T06:00:00.000Z">2020-01-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">数理统计</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    12 minutes read (About 1789 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
             
-                <a class="has-link-black-ter" href="/2020/01/13/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/UMVUE/">求一致最小方差无偏估计的方法</a>
-            
-        </h1>
-        <div class="content">
-            <p>该部分内容对应Hogg课本的第7-8章，主要讨论构造一致最小方差无偏估计(UMVUE)的两种思路，一种是通过构造充分完备统计量的函数，另一种则是通过构造有效估计量。</p>
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="Wechat"></div>
+</a>
+
+                
         </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/01/13/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/UMVUE/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
 
 
 
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/01/12/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Parameter_Estimation/" class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/desert.jpg" alt="统计推断中的参数估计理论">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-12T11:00:00.000Z">2020-01-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">数理统计</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 minutes read (About 1252 words)
-                </span>
-                
-                
-            </div>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/01/13/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/UMVUE/">
+                <span class="level-item">求一致最小方差无偏估计的方法</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/01/12/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Parameter_Estimation/">统计推断中的参数估计理论</a>
-            
-        </h1>
-        <div class="content">
-            <p>该部分内容对应Hogg课本的第6-8章，主要讨论参数估计的几种常用方法。</p>
-<h2 id="一、参数的点估计"><a href="#一、参数的点估计" class="headerlink" title="一、参数的点估计"></a>一、参数的点估计</h2><p>设随机样本$X_i \sim f(x;\theta)$，其中$\theta \in \Omega$，我们期望构造统计量$Y_1=u_1(X_1,X_2,\cdots,X_n)$对参数$\theta$有良好的估计，即寻找参数$\theta$的点估计，这主要通过两种方法：最大似然估计和矩法估计，且它们分别对应不同的准则.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/01/12/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Parameter_Estimation/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
         
     </div>
 </div>
-
-
-
-
-
-
 
 
 </div>
@@ -448,6 +478,50 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#一、显著性检验-Certain-Best-Tests">
+        <span class="has-mr-6">1</span>
+        <span>一、显著性检验(Certain Best Tests)</span>
+        </a></li><li>
+        <a class="is-flex" href="#二、最优势检验-Uniformly-Most-Powerful-Tests">
+        <span class="has-mr-6">2</span>
+        <span>二、最优势检验(Uniformly Most Powerful Tests)</span>
+        </a></li><li>
+        <a class="is-flex" href="#三、似然比检验-Likelihood-Ratio-Tests">
+        <span class="has-mr-6">3</span>
+        <span>三、似然比检验(Likelihood Ratio Tests)</span>
+        </a></li><li>
+        <a class="is-flex" href="#四、序贯似然比检验-Sequential-Probability-Ratio-Test">
+        <span class="has-mr-6">4</span>
+        <span>四、序贯似然比检验(Sequential Probability Ratio Test)</span>
+        </a></li><li>
+        <a class="is-flex" href="#五、决策论观点下的假设检验">
+        <span class="has-mr-6">5</span>
+        <span>五、决策论观点下的假设检验</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#概念1-Minimax-Test">
+        <span class="has-mr-6">5.1</span>
+        <span>概念1: Minimax Test</span>
+        </a></li><li>
+        <a class="is-flex" href="#概念2-Bayesian-Test">
+        <span class="has-mr-6">5.2</span>
+        <span>概念2: Bayesian Test</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#参考文献">
+        <span class="has-mr-6">6</span>
+        <span>参考文献</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
@@ -770,7 +844,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo1.svg" alt="Hexo" height="28">
+                    <img src="/images/logo1.svg" alt="假设检验理论" height="28">
                 
                 </a>
                 <p class="is-size-7">
